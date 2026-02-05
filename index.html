@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaseLab - Fundas & Accesorios</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  background:#0F1720;
+  color:#E6EDF3;
+}
+
+/* HERO */
+header{
+  height:100vh;
+  background:
+  linear-gradient(rgba(15,23,32,.75),rgba(15,23,32,.85)),
+  url("img/hero-1.png") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  padding:80px;
+}
+
+.hero h1{
+  font-size:56px;
+  margin-bottom:25px;
+  line-height:1.1;
+}
+
+.hero button{
+  padding:16px 36px;
+  font-size:18px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#3B82F6;
+  color:#fff;
+  transition:.3s;
+}
+
+.hero button:hover{
+  background:#2563EB;
+  transform:translateY(-3px);
+}
+
+/* SECCIONES */
+section{
+  padding:80px;
+}
+
+h2{
+  font-size:34px;
+  margin-bottom:40px;
+}
+
+/* FILTROS */
+.filters{
+  display:flex;
+  gap:12px;
+  margin-bottom:40px;
+  flex-wrap:wrap;
+}
+
+.filters button{
+  padding:10px 22px;
+  border:1px solid #2A3A4D;
+  background:#18222F;
+  color:#E6EDF3;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.filters button:hover{
+  background:#3B82F6;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#18222F;
+  border:1px solid #2A3A4D;
+  border-radius:10px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:420px;
+  transition:.3s;
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#94A3B8;
+  margin-bottom:12px;
+  flex-grow:1;
+}
+
+.card strong{
+  font-size:18px;
+  margin-bottom:15px;
+  display:block;
+}
+
+.card button{
+  margin-top:auto;
+  padding:14px;
+  border-radius:6px;
+  background:#3B82F6;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+
+
+/* MAS VENDIDO */
+.best{
+  background:#18222F;
+  border:1px solid #2A3A4D;
+  border-radius:10px;
+  padding:50px;
+  display:flex;
+  gap:60px;
+  align-items:center;
+}
+
+.best img{
+  width:320px;
+  border-radius:8px;
+}
+
+.best button{
+  margin-top:20px;
+  padding:14px 30px;
+  background:#3B82F6;
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.best button:hover{
+  background:#2563EB;
+}
+
+
+/* CHECKOUT */
+.checkout{
+  background:#18222F;
+  border:1px solid #2A3A4D;
+  border-radius:10px;
+  padding:40px;
+}
+
+.checkout input{
+  width:100%;
+  padding:14px;
+  margin-bottom:18px;
+  background:#0F1720;
+  border:1px solid #2A3A4D;
+  color:#E6EDF3;
+  border-radius:6px;
+}
+
+.checkout button{
+  padding:16px;
+  width:100%;
+  background:#3B82F6;
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.checkout button:hover{
+  background:#2563EB;
+}
+
+/* CARRITO */
+#cart{
+  position:fixed;
+  right:30px;
+  top:30px;
+  background:#3B82F6;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+#cart:hover{
+  background:#2563EB;
+}
+
+/* FOOTER */ 
+footer{
+  margin-top:80px;
+  padding:60px;
+  text-align:center;
+  color:#94A3B8;
+}
+/* ===== PANEL CARRITO ===== */
+
+.cart-panel{
+  position:fixed;
+  right:0;
+  top:0;
+  width:350px;
+  height:100vh;
+  background:#18222F;
+  border-left:1px solid #2A3A4D;
+  padding:25px;
+  z-index:1000;
+  overflow-y:auto;
+  transition:.4s;
+}
+
+.cart-panel.hidden{
+  transform:translateX(100%);
+}
+
+.cart-panel h3{
+  margin-bottom:20px;
+}
+
+.cart-item{
+  border-bottom:1px solid #2A3A4D;
+  padding:10px 0;
+  margin-bottom:10px;
+}
+
+.cart-item small{
+  color:#94A3B8;
+}
+
+.cart-total{
+  margin-top:20px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.cart-panel button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  background:#3B82F6;
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  cursor:pointer;
+}
+.modelo-selector{
+  text-align:center;
+  padding:100px 40px 60px;
+}
+
+.modelo-selector h2{
+  margin-bottom:25px;
+  font-size:32px;
+}
+
+.modelo-selector select{
+  padding:14px 20px;
+  width:280px;
+  border-radius:6px;
+  border:1px solid #2A3A4D;
+  background:#18222F;
+  color:#E6EDF3;
+  margin-right:10px;
+}
+
+.modelo-selector button{
+  padding:14px 28px;
+  background:#3B82F6;
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="cart" onclick="toggleCart()">
+  🛒 Carrito (<span id="count">0</span>)
+</div>
+
+<header>
+  <div class="hero">
+    <h1>Elegí tu modelo.<br>Elegí tu funda.<br>Comprá online.</h1>
+    <button onclick="document.getElementById('modeloSelector').scrollIntoView({behavior:'smooth'})">
+      Ver catálogo
+    </button>
+  </div>
+</header>
+
+<section class="modelo-selector" id="modeloSelector">
+  <h2>¿Qué modelo de celular tenés?</h2>
+  <select id="modeloSelect">
+    <option value="">Seleccionar modelo</option>
+    <option>iPhone 11</option>
+    <option>iPhone 12</option>
+    <option>iPhone 13</option>
+    <option>iPhone 14</option>
+    <option>Samsung S21</option>
+    <option>Samsung S22</option>
+    <option>Xiaomi Redmi Note</option>
+  </select>
+  <button onclick="elegirModelo()">Ver fundas compatibles</button>
+</section>
+
+<section id="catalogo" style="display:none;">
+  <h2>Catálogo</h2>
+  <p id="modeloMostrado" style="margin-bottom:20px;font-weight:bold;"></p>
+  <div class="filters">
+    <button onclick="filter('all')">Todos</button>
+    <button onclick="filter('funda')">Fundas</button>
+    <button onclick="filter('cargador')">Cargadores</button>
+    <button onclick="filter('accesorio')">Accesorios</button>
+    <button onclick="filter('templado')">Vidrios Templados</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="best">
+  <img src="img/best-1.png">
+  <div>
+    <h2>🔥 Más Vendido</h2>
+    <p>Funda Transparente Premium con bordes reforzados.</p>
+    <button onclick="addToCart('Funda Transparente Premium')">Agregar al carrito</button>
+  </div>
+</section>
+
+<section class="checkout">
+  <h2>Finalizar Pedido</h2>
+  <input placeholder="Nombre completo">
+  <input placeholder="Dirección">
+  <input placeholder="Teléfono">
+<button id="confirmarBtn">Confirmar pedido</button>
+
+
+
+</section>
+
+<footer>
+  <h3>CaseLab</h3>
+  <p>Fundas & Accesorios para celulares</p>
+</footer>
+
+<div id="cartPanel" class="cart-panel hidden">
+  <h3>Tu carrito</h3>
+  <div id="cartItems"></div>
+<div class="cart-total">
+  Total: $ <span id="total">0</span>
+</div>
+
+
+  <button onclick="toggleCart()">Cerrar</button>
+</div>
+
+<script>
+const products = [
+
+  // ===== FUNDAS =====
+  {
+    img:"img/funda-1.png",
+       name:"Funda Transparente Premium",
+    desc:"Protección flexible con bordes reforzados.",
+    price:8500,
+    type:"funda"
+  },
+  {
+    img:"img/funda-2.png",
+
+     name:"Funda Silicona Antigolpes",
+    desc:"Diseño limpio que resalta tu celular.",
+    price:9200,
+    type:"funda"
+  },  
+    {
+    img:"img/funda-3.png",
+    name:"Funda Diseño Artístico Personalizado",
+    desc:"Estilo único con impresión de alta calidad.",
+    price:9900,
+    type:"funda"
+  },
+  {
+    img:"img/funda-4.png",
+    name:"Funda Antigolpes Silicona",
+    desc:"Máxima protección contra caídas.",
+    price:10500,
+    type:"funda"
+  },
+  {
+    img:"img/funda-5.png",
+    name:"Funda Carcasa Dura",
+    desc:"Protección rígida con acabado mate.",
+    price:8800,
+    type:"funda"
+  },
+  {
+    img:"img/funda-6.png",
+    name:"Funda Con Diseño Acrilíco",
+    desc:"Estilo y funcionalidad en uno.",
+    price:13000,
+    type:"funda"  
+  },  
+  {
+    img:"img/funda-7.png",
+    name:"Funda Transparente Anime",
+    desc:"Protección extra en los bordes.",
+    price:9700,
+    type:"funda"
+  },
+  {
+    img:"img/funda-8.png",
+    name:"Funda Anticaída con Soporte 2x1",
+    desc:"Incluye soporte trasero para ver videos.",
+    price:11500,
+    type:"funda"
+  },
+  {
+    img:"img/funda-9.png",
+    name:"Funda Híbrida Doble Capa",
+    desc:"Combinación de silicona y policarbonato.",
+    price:10800,
+    type:"funda"
+  },
+  {
+    img:"img/funda-10.png",
+    name:"Funda Disney",
+    desc:"Protección ligera sin agregar volumen.",
+    price:7600,
+    type:"funda"    
+  },
+  {
+    img:"img/funda-11.png",
+    name:"Funda con Diseño Personalizable",
+    desc:"Crea tu propia funda única.",
+    price:12500,
+    type:"funda"
+  },
+  {
+    img:"img/funda-12.png",
+    name:"Funda Resistente al Agua Magnetica",
+    desc:"Protección contra salpicaduras y polvo.",
+    price:14000,
+    type:"funda"
+  },
+
+  // ===== CARGADORES =====
+  {
+    img:"img/cargador-1.png",
+    name:"Cargador Rápido USB-C 20W",
+    desc:"Carga rápida y segura para tu dispositivo.",
+    price:12000,
+    type:"cargador"
+  },
+  {
+    img:"img/cargador-2.png",
+    name:"Cargador y Cable USB CC Reforzado",
+    desc:"Cable mallado resistente y duradero.",
+    price:4500,
+    type:"cargador"
+  },
+  {
+    img:"img/cargador-3.png",
+    name:"Cargador Inalámbrico Qi",
+    desc:"Carga sin cables con tecnología Qi.",
+    price:15000,
+    type:"cargador"
+  }
+  ,
+  { 
+    img:"img/cargador-4.png",
+    name:"Power Bank 10000mAh",
+    desc:"Batería portátil para cargar en cualquier lugar.",
+    price:18000,
+    type:"cargador"
+  },  
+
+  // ===== ACCESORIOS =====
+  {
+    img:"img/accesorio-1.png",
+    name:"Soporte de Escritorio",
+    desc:"Ideal para videollamadas y contenido.",
+    price:6800,
+    type:"accesorio"
+  },
+  {
+    img:"img/accesorio-2.png",
+    name:"Airpods 2 generación",
+    desc:"Mejor agarre y soporte trasero.",
+    price:3900,
+    type:"accesorio"
+  },
+  {
+    img:"img/accesorio-3.png",
+    name:"Airpods Pro",
+    desc:"Gran calidad de sonido y cancelación de ruido.",
+    price:9500,
+    type:"accesorio"
+  },
+  {
+    img:"img/accesorio-4.png",
+    name:"Protector Auriculares Inalámbricos",
+    desc:"Plastico Reforzado.",
+    price:22000,
+    type:"accesorio"
+  },
+  {
+    img:"img/accesorio-5.png",
+    name:"Power Bank 20000mAh",
+    desc:"Carga rápida y múltiples puertos.",
+    price:18000,
+    type:"accesorio"
+  },
+
+  // ===== TEMPLADOS =====
+  {
+    img:"img/templado-1.png",
+    name:"Vidrio Templado 9H",
+    desc:"Protección total contra rayones y golpes.",
+    price:5500,
+    type:"templado"
+  },
+  {
+    img:"img/templado-2.png",
+    name:"Protector de Pantalla Completo",
+    desc:"Cobertura total con bordes curvos.",
+    price:7500,
+    type:"templado"
+  },
+];
+let modeloElegido = "";
+let cart = [];
+
+/* ===== FUNCIONES PRINCIPALES ===== */
+
+function elegirModelo(){
+  const select = document.getElementById("modeloSelect");
+  modeloElegido = select.value;
+
+  if(modeloElegido === ""){
+    alert("Seleccioná tu modelo primero");
+    return;
+  }
+
+  document.getElementById("catalogo").style.display = "block";
+  document.getElementById("modeloMostrado").innerText =
+    "Mostrando fundas para: " + modeloElegido;
+
+  document.getElementById("catalogo").scrollIntoView({behavior:"smooth"});
+  render(products);
+}
+
+function toggleCart(){
+  document.getElementById('cartPanel').classList.toggle('hidden');
+}
+
+function addToCart(name){
+  const product = products.find(p => p.name === name);
+  cart.push(product);
+  updateCart();
+
+  // animación carrito
+  const cartBtn = document.getElementById("cart");
+  cartBtn.style.transform = "scale(1.2)";
+  setTimeout(()=> cartBtn.style.transform = "scale(1)",200);
+}
+
+function removeFromCart(i){
+  cart.splice(i,1);
+  updateCart();
+}
+
+function updateCart(){
+  document.getElementById('count').innerText = cart.length;
+
+  const items = document.getElementById('cartItems');
+  const totalEl = document.getElementById('total');
+
+  items.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((p,index)=>{
+    total += p.price;
+
+    items.innerHTML += `
+      <div class="cart-item">
+        <strong>${p.name}</strong><br>
+        <small>$ ${p.price.toLocaleString()}</small><br>
+        <button onclick="removeFromCart(${index})">Quitar</button>
+      </div>
+    `;
+  });
+
+  totalEl.innerText = total.toLocaleString();
+}
+
+function filter(type){
+  if(type==='all') return render(products);
+  render(products.filter(p=>p.type===type));
+}
+
+function render(list){
+  const grid = document.getElementById('grid');
+  grid.innerHTML='';
+
+  list.forEach(p=>{
+    grid.innerHTML+=`
+      <div class="card">
+        <img src="${p.img}">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <strong>$ ${p.price.toLocaleString()}</strong>
+        <button onclick="addToCart('${p.name}')">Agregar</button>
+      </div>
+    `;
+  });
+}
+
+/* ===== CHECKOUT ===== */
+
+document.getElementById("confirmarBtn").addEventListener("click", ()=>{
+
+  if(cart.length === 0){
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  let resumen = "🛒 *NUEVO PEDIDO DESDE LA WEB*\n\n";
+
+  cart.forEach(p=>{
+    resumen += `• ${p.name} - $${p.price}\n`;
+  });
+
+  resumen += `\nModelo del celular: ${modeloElegido}\n`;
+
+  const nombre = document.querySelectorAll(".checkout input")[0].value;
+  const direccion = document.querySelectorAll(".checkout input")[1].value;
+  const telefono = document.querySelectorAll(".checkout input")[2].value;
+
+  resumen += `\nCliente: ${nombre}
+Dirección: ${direccion}
+Teléfono: ${telefono}
+
+💳 Te enviaremos el link de pago de Mercado Pago con el total del pedido.`;
+
+  const mensaje = encodeURIComponent(resumen);
+  window.open(`https://wa.me/5492612423824?text=${mensaje}`, "_blank");
+
+});
+</script>
+
+</body>
+</html>
